@@ -11,11 +11,19 @@ public class ItemPedido {
         this.precoVenda = precoVenda;
     }
 
-    public double getTotal() { return quantidade * precoVenda; }
+    public double getTotal() {
+        return quantidade * precoVenda;
+    }
 
-    public Produto getProduto() { return produto; }
+    public Produto getProduto() {
+        return produto;
+    }
 
-    public int getQuantidade() { return quantidade; }
+    public int getQuantidade() {
+        return quantidade;
+    }
 
-    public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 }

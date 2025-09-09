@@ -68,9 +68,15 @@ public class Pedido implements Identificavel {
         cliente.getNotificacao().enviarMensagem("Seu pedido foi entregue. Obrigado pela compra!");
     }
 
-    public StatusPedido getStatus() { return status; }
+    public StatusPedido getStatus() {
+        return status;
+    }
 
-    public Cliente getCliente() { return cliente; }
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-    public List<ItemPedido> getItens() { return itens; }
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
 }

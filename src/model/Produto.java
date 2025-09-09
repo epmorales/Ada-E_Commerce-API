@@ -15,13 +15,23 @@ public class Produto implements Identificavel {
     }
 
     @Override
-    public UUID getId() { return id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public String getNome() { return nome; }
+    public String getNome() {
+        return nome;
+    }
 
-    public void setNome(String nome) { this.nome = nome; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public double getPrecoBase() { return precoBase; }
+    public double getPrecoBase() {
+        return precoBase;
+    }
 
-    public void setPrecoBase(double precoBase) { this.precoBase = precoBase; }
+    public void setPrecoBase(double precoBase) {
+        this.precoBase = precoBase;
+    }
 }
