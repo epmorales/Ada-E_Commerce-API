@@ -68,32 +68,41 @@ public class Main {
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
 
         System.out.println(ANSI_GREEN + "|" + centralizarTexto("CLIENTES", largura) + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("1 - Cadastrar cliente", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("2 - Listar clientes", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("3 - Atualizar cliente", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("1 - Cadastrar cliente", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("2 - Listar clientes", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("3 - Atualizar cliente", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
 
         System.out.println(ANSI_GREEN + "|" + centralizarTexto("PRODUTOS", largura) + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("4 - Cadastrar produto", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("5 - Listar produtos", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("6 - Atualizar produto", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("4 - Cadastrar produto", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("5 - Listar produtos", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("6 - Atualizar produto", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
 
         System.out.println(ANSI_GREEN + "|" + centralizarTexto("PEDIDOS", largura) + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("7 - Criar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("8 - Adicionar item ao pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("9 - Alterar quantidade de item", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("10 - Remover item do pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("11 - Finalizar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("12 - Pagar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("13 - Entregar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("7 - Criar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("8 - Adicionar item ao pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("9 - Alterar quantidade de item", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("10 - Remover item do pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("11 - Finalizar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("12 - Pagar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("13 - Entregar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
 
-        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarLinha("0 - Sair", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("0 - Sair", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + " " + "-".repeat(largura) + ANSI_RESET);
     }
 
     private static String formatarLinha(String texto, int largura) {
+        if (texto.length() > largura) {
+            return texto.substring(0, largura);
+        }
+        return texto + " ".repeat(largura - texto.length());
+    }
+
+    private static String formatarItemMenu(String texto, int largura) {
+        String recuo = "  ";
+        texto = recuo + texto;
         if (texto.length() > largura) {
             return texto.substring(0, largura);
         }
