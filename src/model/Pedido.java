@@ -20,7 +20,9 @@ public class Pedido implements Identificavel {
     }
 
     @Override
-    public java.util.UUID getId() { return id; }
+    public java.util.UUID getId() {
+        return id;
+    }
 
     public void adicionarItem(Produto produto, int quantidade, double precoVenda) {
         if (status != StatusPedido.ABERTO)
@@ -45,7 +47,9 @@ public class Pedido implements Identificavel {
         itens.removeIf(i -> i.getProduto().equals(produto));
     }
 
-    public double calcularTotal() { return itens.stream().mapToDouble(ItemPedido::getTotal).sum(); }
+    public double calcularTotal() {
+        return itens.stream().mapToDouble(ItemPedido::getTotal).sum();
+    }
 
     public void finalizarPedido() {
         if (itens.isEmpty() || calcularTotal() <= 0)
@@ -68,6 +72,19 @@ public class Pedido implements Identificavel {
         cliente.getNotificacao().enviarMensagem("Seu pedido foi entregue. Obrigado pela compra!");
     }
 
+    // --- Novo método de cancelamento ---
+    public void cancelarPedido() {
+        if (status == StatusPedido.FINALIZADO) {
+            throw new IllegalStateException("Não é possível cancelar um pedido já entregue.");
+        }
+        if (status == StatusPedido.CANCELADO) {
+            throw new IllegalStateException("O pedido já foi cancelado anteriormente.");
+        }
+        this.status = StatusPedido.CANCELADO;
+        cliente.getNotificacao().enviarMensagem("Seu pedido foi cancelado.");
+    }
+
+    // Getters
     public StatusPedido getStatus() {
         return status;
     }
