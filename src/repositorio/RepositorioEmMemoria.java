@@ -1,5 +1,6 @@
 package repositorio;
 
+import model.Cliente;
 import java.util.*;
 
 public class RepositorioEmMemoria<T extends Identificavel> implements Repositorio<T> {
@@ -7,6 +8,20 @@ public class RepositorioEmMemoria<T extends Identificavel> implements Repositori
 
     @Override
     public void salvar(T entidade) {
+        if (entidade instanceof Cliente) {
+            Cliente novoCliente = (Cliente) entidade;
+
+            boolean documentoJaExiste = banco.values().stream()
+                    .filter(e -> e instanceof Cliente)
+                    .map(e -> (Cliente) e)
+                    .anyMatch(c -> c.getDocumento().equals(novoCliente.getDocumento())
+                            && !c.getId().equals(novoCliente.getId()));
+
+            if (documentoJaExiste) {
+                throw new IllegalArgumentException("Erro ao cadastrar: Já existe um cliente com o documento " + novoCliente.getDocumento() + ".");
+            }
+        }
+
         banco.put(entidade.getId(), entidade);
     }
 

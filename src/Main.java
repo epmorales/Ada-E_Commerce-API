@@ -48,6 +48,8 @@ public class Main {
                     case 11 -> finalizarPedido();
                     case 12 -> pagarPedido();
                     case 13 -> entregarPedido();
+                    case 14 -> listarPedidos();
+                    case 15 -> cancelarPedido();
                     case 0 -> {
                         rodando = false;
                         System.out.println(ANSI_GREEN + "Saindo... Até a próxima!" + ANSI_RESET);
@@ -87,17 +89,12 @@ public class Main {
         System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("11 - Finalizar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("12 - Pagar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("13 - Entregar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("14 - Listar pedidos", largura) + ANSI_GREEN + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("15 - Cancelar pedido", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
 
         System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("0 - Sair", largura) + ANSI_GREEN + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + " " + "-".repeat(largura) + ANSI_RESET);
-    }
-
-    private static String formatarLinha(String texto, int largura) {
-        if (texto.length() > largura) {
-            return texto.substring(0, largura);
-        }
-        return texto + " ".repeat(largura - texto.length());
     }
 
     private static String formatarItemMenu(String texto, int largura) {
@@ -117,6 +114,7 @@ public class Main {
         return " ".repeat(esquerda) + texto + " ".repeat(direita);
     }
 
+    // Métodos CLIENTES
     private static void cadastrarCliente() {
         System.out.print("Nome: ");
         String nome = scanner.nextLine().trim();
@@ -152,6 +150,7 @@ public class Main {
         }, () -> System.out.println("Cliente não encontrado."));
     }
 
+    // Métodos PRODUTOS
     private static void cadastrarProduto() {
         System.out.print("Nome do produto: ");
         String nome = scanner.nextLine().trim();
@@ -185,6 +184,7 @@ public class Main {
         }, () -> System.out.println("Produto não encontrado."));
     }
 
+    // Métodos PEDIDOS
     private static void criarPedido() {
         listarClientes();
         System.out.print("ID do cliente: ");
@@ -253,29 +253,54 @@ public class Main {
 
     private static void finalizarPedido() {
         Pedido pedido = selecionarPedido();
-        pedido.finalizarPedido();
-        repoPedidos.atualizar(pedido);
-        System.out.println(ANSI_GREEN + "Pedido finalizado (AGUARDANDO_PAGAMENTO)!" + ANSI_RESET);
+        try {
+            pedido.finalizarPedido();
+            repoPedidos.atualizar(pedido);
+            System.out.println(ANSI_GREEN + "Pedido finalizado (AGUARDANDO_PAGAMENTO)!" + ANSI_RESET);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void pagarPedido() {
         Pedido pedido = selecionarPedido();
-        pedido.pagarPedido();
-        repoPedidos.atualizar(pedido);
-        System.out.println(ANSI_GREEN + "Pedido marcado como PAGO!" + ANSI_RESET);
+        try {
+            pedido.pagarPedido();
+            repoPedidos.atualizar(pedido);
+            System.out.println(ANSI_GREEN + "Pedido marcado como PAGO!" + ANSI_RESET);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void entregarPedido() {
         Pedido pedido = selecionarPedido();
-        pedido.entregarPedido();
-        repoPedidos.atualizar(pedido);
-        System.out.println(ANSI_GREEN + "Pedido entregue (FINALIZADO)!" + ANSI_RESET);
+        try {
+            pedido.entregarPedido();
+            repoPedidos.atualizar(pedido);
+            System.out.println(ANSI_GREEN + "Pedido entregue (FINALIZADO)!" + ANSI_RESET);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void cancelarPedido() {
+        Pedido pedido = selecionarPedido();
+        try {
+            pedido.cancelarPedido();
+            repoPedidos.atualizar(pedido);
+            System.out.println(ANSI_GREEN + "Pedido cancelado com sucesso!" + ANSI_RESET);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void listarPedidos() {
         System.out.println("=== Pedidos ===");
         for (Pedido p : repoPedidos.listar()) {
-            System.out.println(p.getId() + " | Cliente: " + p.getCliente().getNome() + " | Status: " + p.getStatus() + " | Total: R$ " + String.format("%.2f", p.calcularTotal()));
+            System.out.println(p.getId() + " | Cliente: " + p.getCliente().getNome()
+                    + " | Status: " + p.getStatus()
+                    + " | Total: R$ " + String.format("%.2f", p.calcularTotal()));
         }
     }
 }
