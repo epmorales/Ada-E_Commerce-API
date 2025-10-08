@@ -29,14 +29,6 @@ public class Pedido implements Identificavel {
         this.status = StatusPedido.ABERTO;
     }
 
-<<<<<<< HEAD
-=======
-    @Override
-    public java.util.UUID getId() {
-        return id;
-    }
-
->>>>>>> d38994804010dd055a15d6794fd9ac5631adecce
     public void adicionarItem(Produto produto, int quantidade, double precoVenda) {
         if (status != StatusPedido.ABERTO) {
             throw new IllegalStateException("Não é possível adicionar itens, pedido não está aberto. Status atual: " + status);
@@ -74,7 +66,6 @@ public class Pedido implements Identificavel {
                 );
     }
 
-<<<<<<< HEAD
     public void removerItem(Produto produto) {
         if (status != StatusPedido.ABERTO) {
             throw new IllegalStateException("Não é possível remover itens, pedido não está aberto. Status atual: " + status);
@@ -83,10 +74,6 @@ public class Pedido implements Identificavel {
         if (!removido) {
             throw new IllegalArgumentException("Produto não encontrado no pedido.");
         }
-=======
-    public double calcularTotal() {
-        return itens.stream().mapToDouble(ItemPedido::getTotal).sum();
->>>>>>> d38994804010dd055a15d6794fd9ac5631adecce
     }
 
     public void finalizarPedido() {
@@ -127,7 +114,6 @@ public class Pedido implements Identificavel {
         cliente.getNotificacao().enviarMensagem("Seu pedido foi entregue. Obrigado pela compra!");
     }
 
-<<<<<<< HEAD
     public void cancelarPedido() {
         if (status == StatusPedido.PAGO || status == StatusPedido.FINALIZADO) {
             throw new IllegalStateException("Não é possível cancelar um pedido neste status. Status atual: " + status);
@@ -136,23 +122,6 @@ public class Pedido implements Identificavel {
         this.status = StatusPedido.CANCELADO;
         this.dataCancelamento = LocalDateTime.now();
         cliente.getNotificacao().enviarMensagem("Seu pedido foi cancelado.");
-=======
-    // --- Novo método de cancelamento ---
-    public void cancelarPedido() {
-        if (status == StatusPedido.FINALIZADO) {
-            throw new IllegalStateException("Não é possível cancelar um pedido já entregue.");
-        }
-        if (status == StatusPedido.CANCELADO) {
-            throw new IllegalStateException("O pedido já foi cancelado anteriormente.");
-        }
-        this.status = StatusPedido.CANCELADO;
-        cliente.getNotificacao().enviarMensagem("Seu pedido foi cancelado.");
-    }
-
-    // Getters
-    public StatusPedido getStatus() {
-        return status;
->>>>>>> d38994804010dd055a15d6794fd9ac5631adecce
     }
 
     public void aplicarCupom(CupomDesconto cupom) {
