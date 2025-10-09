@@ -91,5 +91,35 @@ O sistema foi construído com foco em **boas práticas de Programação Orientad
 
 ---
 
-## 🏗️ Estrutura do Projeto
+## 💬 Fluxo Simplificado do Sistema
+
+1. Cliente é cadastrado com CPF obrigatório.  
+2. Produtos são registrados no catálogo.  
+3. Cliente realiza pedido.  
+4. Adiciona produtos com quantidades e preços.  
+5. Pedido é finalizado e o status muda para **“Aguardando pagamento”**.  
+6. Cliente realiza o pagamento (status: **“Pago”**).  
+7. Pedido é entregue (status: **“Finalizado”**).  
+8. Cliente recebe notificações automáticas por e-mail em todas as etapas.
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Eric Morales**  
+💼 Analista Pleno — Superintendência de Operações de Órgãos Legais  
+🏦 Itaú Unibanco  
+🎓 Estudante de Ciência da Computação — 4º semestre  
+📧 [Contato via GitHub](https://github.com/epmorales)
+
+---
+
+## 📜 Licença
+
+Este projeto foi desenvolvido para fins **educacionais** no contexto do curso de **Programação Orientada a Objetos — Ada Tech**, sem fins comerciais.
+
+---
+⭐ **Se este projeto te ajudou, deixe uma estrela no repositório!**
+
+
 
