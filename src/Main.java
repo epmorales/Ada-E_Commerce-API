@@ -81,7 +81,7 @@ public class Main {
     private static void exibirMenu() {
         int largura = 42;
         System.out.println(ANSI_GREEN + " " + "-".repeat(largura) + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "|" + centralizarTexto("Ada E-Commerce (Módulo 2)", largura) + "|" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "|" + centralizarTexto("Ada E-Commerce", largura) + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + " ".repeat(largura) + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + centralizarTexto("CLIENTES", largura) + "|" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "|" + ANSI_WHITE + formatarItemMenu("1 - Cadastrar cliente", largura) + ANSI_GREEN + "|" + ANSI_RESET);
