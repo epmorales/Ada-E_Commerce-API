@@ -104,22 +104,13 @@ O sistema foi construído com foco em **boas práticas de Programação Orientad
 
 ---
 
-## 👨‍💻 Desenvolvido por
-
-**Eric Morales**  
-💼 Analista Pleno — Superintendência de Operações de Órgãos Legais  
-🏦 Itaú Unibanco  
-🎓 Estudante de Ciência da Computação — 4º semestre  
-📧 [Contato via GitHub](https://github.com/epmorales)
-
----
-
 ## 📜 Licença
 
 Este projeto foi desenvolvido para fins **educacionais** no contexto do curso de **Programação Orientada a Objetos — Ada Tech**, sem fins comerciais.
 
 ---
 ⭐ **Se este projeto te ajudou, deixe uma estrela no repositório!**
+
 
 
 
